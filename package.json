@@ -1,0 +1,16 @@
+{
+  "name": "management",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Akshat Pandey",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node index.js"
+  },
+  "devDependencies": {
+    "prettier": "3.6.2"
+  }
+}
