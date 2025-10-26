@@ -1,5 +1,47 @@
 import Mailgen from "mailgen";
+import nodemailer from "nodemailer"
 
+const sendEmail= async( options )=>{
+    const mailGenerator= new Mailgen({
+        theme:"default",
+        product:{
+            name:"Task Manager",
+            link:"https://localhost:3000"
+        }
+    })
+
+    const emailTextual=mailGenerator.generatePlaintext(options.mailgenContent)
+
+    const emailHtml= mailGenerator.generate(options.mailgenContent)
+
+
+    const transporter=nodemailer.createTransport({
+        host: process.env.MAILTRAP_SMTP_HOST,
+        port: process.env.MAILTRAP_SMTP_PORT,
+        auth:{
+            user:process.env.MAILTRAP_SMTP_USER,
+            pass:process.env.MAILTRAP_SMTP_PASS
+        }
+    })
+
+    const mail={
+        from: "21951a0504@iare.ac.in",
+        to: options.email,
+        subject: options.subject,
+        text:emailTextual,
+        html:emailHtml
+    }
+
+    try{
+        await transporter.sendMail(mail)
+    }
+    catch(err){
+        console.error(err);
+    }
+
+
+};
+ 
 const emailVerificationContent=(username, verificationUrl)=>{
     return{
         body:{
@@ -40,5 +82,6 @@ const forgotPasswordContent=(username, passwordResetUrl)=>{
 
 export{
     emailVerificationContent,
-    forgotPasswordContent
+    forgotPasswordContent,
+    sendEmail
 }
