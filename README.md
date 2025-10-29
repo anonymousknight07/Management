@@ -298,7 +298,7 @@ npx prettier --write .
 
 | Variable | Description | Required |
 |----------|-------------|----------|
-| `PORT` | Server port | No (default: 3000) |
+| `PORT` | Server port | No (default: 8000) |
 | `MONGODB_URI` | MongoDB connection string | Yes |
 | `ACCESS_TOKEN_SECRET` | Secret for access tokens | Yes |
 | `ACCESS_TOKEN_EXPIRY` | Access token validity period | Yes |
