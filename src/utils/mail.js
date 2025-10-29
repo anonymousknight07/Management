@@ -10,6 +10,8 @@ const sendEmail= async( options )=>{
         }
     })
 
+    console.log
+
     const emailTextual=mailGenerator.generatePlaintext(options.mailgenContent)
 
     const emailHtml= mailGenerator.generate(options.mailgenContent)
@@ -25,7 +27,7 @@ const sendEmail= async( options )=>{
     })
 
     const mail={
-        from: "21951a0504@iare.ac.in",
+        from: "timepass@gmail.com",
         to: options.email,
         subject: options.subject,
         text:emailTextual,
